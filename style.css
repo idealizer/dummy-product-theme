@@ -4,7 +4,7 @@ Theme URI: https://www.contentfactory.ltd
 Description: Parameterized product marketing theme for Content Factory dummy* sites (donate, docs, ticket intake via dummySUPPORT, legal).
 Author: Content Factory OÜ
 Author URI: https://www.contentfactory.ltd
-Version: 1.1.0
+Version: 1.1.1
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: dummy-product
@@ -37,12 +37,14 @@ html.dark {
   --dummy-gradient: linear-gradient(160deg, #1c1608 0%, #0b1220 46%, #0d1c2e 100%);
   color-scheme: dark;
 }
+html { overflow-x: clip; }
 body {
   margin: 0;
   font-family: var(--dummy-font);
   color: var(--dummy-text);
   background: var(--dummy-gradient);
   min-height: 100vh;
+  overflow-x: clip;
 }
 a { color: var(--dummy-primary); }
 :focus-visible {
@@ -55,7 +57,9 @@ a { color: var(--dummy-primary); }
   align-items: center;
   gap: .75rem;
   flex-wrap: wrap;
-  padding: 1.25rem 5vw;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1.25rem 5.5rem 1.25rem 5vw;
 }
 .site-nav {
   display: flex;
@@ -85,6 +89,10 @@ a { color: var(--dummy-primary); }
 .brand__dummy { color: var(--dummy-brand-yellow); }
 .brand__product { color: var(--dummy-brand-navy); }
 .theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 20;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -94,8 +102,9 @@ a { color: var(--dummy-primary); }
   border-radius: 12px;
   border: 1px solid var(--dummy-border);
   background: var(--dummy-surface);
-  color: var(--dummy-text);
+  color: var(--dummy-brand-navy);
   cursor: pointer;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .12);
 }
 .theme-toggle__sun { display: none; }
 html.dark .theme-toggle__moon { display: none; }
@@ -139,9 +148,12 @@ html.dark .theme-toggle__sun { display: block; }
   border: 1px solid var(--dummy-border);
 }
 .site-footer {
+  box-sizing: border-box;
+  max-width: 100%;
   padding: 2rem 5vw;
   font-size: .9rem;
   color: var(--dummy-muted);
+  overflow-wrap: anywhere;
 }
 .site-footer a { color: var(--dummy-text); }
 .panel {
