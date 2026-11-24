@@ -23,9 +23,6 @@ if ( empty( $config['suite'] ) ) :
 else :
 	?>
 	<section class="hero hero--suite">
-		<div class="brand notranslate" lang="en" translate="no">
-			<span class="brand__dummy">dummy</span><span class="brand__product"><?php echo esc_html( $config['label'] ); ?></span>
-		</div>
 		<?php
 		if ( have_posts() ) {
 			while ( have_posts() ) {
