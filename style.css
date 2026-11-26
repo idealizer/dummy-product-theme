@@ -4,7 +4,7 @@ Theme URI: https://www.contentfactory.ltd
 Description: Parameterized product marketing theme for Content Factory dummy* sites (donate, docs, ticket intake via dummySUPPORT, legal).
 Author: Content Factory OÜ
 Author URI: https://www.contentfactory.ltd
-Version: 1.2.0
+Version: 1.2.1
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: dummy-product
@@ -85,13 +85,18 @@ html.dark .site-header {
   flex-wrap: wrap;
   padding: .85rem 0;
 }
+.brand { order: 1; }
+.nav-toggle { order: 2; }
+.theme-toggle { order: 3; margin-left: auto; }
 .site-nav,
 .site-nav__menu {
+  order: 4;
   display: flex;
+  flex: 1 0 100%;
   flex-wrap: wrap;
   align-items: center;
   gap: .15rem .2rem;
-  margin: 0 0 0 auto;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
