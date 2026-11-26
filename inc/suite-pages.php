@@ -50,6 +50,43 @@ function dummy_product_suite_cards() {
 }
 
 /**
+ * Split a dummy* title so "dummy" and the product name can take brand colors.
+ *
+ * @param string $title Title.
+ * @return string
+ */
+function dummy_product_brand_markup( $title ) {
+	$title = (string) $title;
+	if ( strncasecmp( $title, 'dummy', 5 ) === 0 ) {
+		return '<span class="brand__dummy">dummy</span><span class="brand__product">' . esc_html( substr( $title, 5 ) ) . '</span>';
+	}
+	return esc_html( $title );
+}
+
+/**
+ * Card icon for a suite product, when we have one.
+ *
+ * @param WP_Post $post Product page.
+ * @return string
+ */
+function dummy_product_suite_icon_url( $post ) {
+	$slug = $post instanceof WP_Post ? $post->post_name : '';
+	$map  = array(
+		'dummyfiles'   => 'dummyfiles.png',
+		'dummyfinance' => 'dummyfinance.png',
+		'dummyjob'     => 'dummyjob.png',
+		'dummylang'    => 'dummylang.png',
+		'dummysql'     => 'dummysql.png',
+		'dummysupport' => 'dummysupport.png',
+		'dummyteam'    => 'dummyteam.jpg',
+	);
+	if ( ! isset( $map[ $slug ] ) ) {
+		return '';
+	}
+	return get_template_directory_uri() . '/assets/images/' . $map[ $slug ];
+}
+
+/**
  * Page definitions inserted when the slug does not exist yet.
  *
  * @return array<int,array<string,mixed>>

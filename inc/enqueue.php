@@ -22,7 +22,7 @@ function dummy_product_enqueue() {
 	);
 	wp_enqueue_style(
 		'dummy-product-fonts',
-		'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap',
+		'https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap',
 		array(),
 		null
 	);

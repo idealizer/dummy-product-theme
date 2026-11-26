@@ -17,4 +17,13 @@
 	button.addEventListener('click', function () {
 		apply(!document.documentElement.classList.contains('dark'));
 	});
+
+	var navToggle = document.getElementById('dummy-nav-toggle');
+	var nav = document.getElementById('site-nav');
+	if (navToggle && nav) {
+		navToggle.addEventListener('click', function () {
+			var open = nav.classList.toggle('is-open');
+			navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+		});
+	}
 }());

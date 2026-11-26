@@ -27,7 +27,7 @@ else :
 		if ( have_posts() ) {
 			while ( have_posts() ) {
 				the_post();
-				the_title( '<h1 class="notranslate" lang="en" translate="no">', '</h1>' );
+				echo '<h1 class="brand-title notranslate" lang="en" translate="no">' . dummy_product_brand_markup( get_the_title() ) . '</h1>';
 				echo '<div class="entry-content">';
 				the_content();
 				echo '</div>';
@@ -46,7 +46,13 @@ else :
 				$blurb = $card->post_excerpt !== '' ? $card->post_excerpt : wp_trim_words( wp_strip_all_tags( $card->post_content ), 24 );
 				?>
 				<a class="suite-card" href="<?php echo esc_url( get_permalink( $card ) ); ?>">
-					<span class="suite-card__title notranslate" lang="en" translate="no"><?php echo esc_html( get_the_title( $card ) ); ?></span>
+					<?php
+					$icon = dummy_product_suite_icon_url( $card );
+					if ( $icon !== '' ) :
+						?>
+						<img class="suite-card__icon" src="<?php echo esc_url( $icon ); ?>" alt="" width="64" height="64" />
+					<?php endif; ?>
+					<span class="suite-card__title brand-title notranslate" lang="en" translate="no"><?php echo dummy_product_brand_markup( get_the_title( $card ) ); ?></span>
 					<?php if ( $badge !== '' ) : ?>
 						<span class="<?php echo esc_attr( $pill ); ?>"><?php echo esc_html( $badge ); ?></span>
 					<?php endif; ?>
